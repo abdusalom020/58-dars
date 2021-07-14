@@ -1,3 +1,12 @@
+:root {
+  --ibarra-font: 'Ibarra Real Nova', serif;
+  --public-font: 'Public Sans', sans-serif;
+  --hover-color: #5fb4a2;
+  --text-color: #33323d;
+  --btn-color: #203a4c;
+  --white-color: #fff;
+}
+
 @font-face {
   font-family: 'Public Sans';
   src: url("../font/PublicSans-Regular.woff2") format("woff2"), url("../font/PublicSans-Regular.woff") format("woff");
@@ -12,15 +21,6 @@
   font-weight: bold;
   font-style: normal;
   font-display: swap;
-}
-
-:root {
-  --ibarra-font: 'Ibarra Real Nova', serif;
-  --public-font: 'Public Sans', sans-serif;
-  --hover-color: #5fb4a2;
-  --text-color: #33323d;
-  --btn-color: #203a4c;
-  --white-color: #fff;
 }
 
 html {
