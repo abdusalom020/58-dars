@@ -23,39 +23,42 @@
   --white-color: #fff;
 }
 
+@mixin flex-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+@mixin list-style {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
 html {
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   height: 100%;
   scroll-behavior: smooth;
 }
 
 * {
-  -webkit-box-sizing: inherit;
-          box-sizing: inherit;
+  box-sizing: inherit;
   list-style: none;
-}
+  
+  &::before {
+    box-sizing: inherit;
+    list-style: none;
+  }
 
-*::before {
-  -webkit-box-sizing: inherit;
-          box-sizing: inherit;
-  list-style: none;
-}
-
-*::after {
-  -webkit-box-sizing: inherit;
-          box-sizing: inherit;
-  list-style: none;
+  &::after {
+    box-sizing: inherit;
+    list-style: none;
+  }
 }
 
 body {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  flex-direction: column;
   height: 100%;
   padding: 0;
   margin: 0;
@@ -100,15 +103,9 @@ img {
 }
 
 .header-container {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .header-logo__link {
@@ -152,19 +149,8 @@ img {
 }
 
 .header-nav__list {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  padding: 0;
-  margin: 0;
-  list-style: none;
+  @include flex-column();
+  @include list-style();
 }
 
 .header-nav__item:not(:last-child) {
@@ -184,76 +170,66 @@ img {
   letter-spacing: 2px;
   text-transform: uppercase;
   color: var(--white-color);
-  -webkit-transition: color 0.4s ease;
   transition: color 0.4s ease;
-}
 
-.header-nav__link:hover {
-  color: var(--hover-color);
+  &:hover {
+    color: var(--hover-color);
+  }
 }
 
 .header-nav--active {
   color: var(--hover-color);
 }
 
+
 @media only screen and (min-width: 700px) {
   .container {
     padding-left: 40px;
     padding-right: 40px;
   }
+
   .header {
     position: relative;
     padding-top: 64px;
     padding-bottom: 47px;
   }
+
   .header-container {
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    -webkit-box-pack: justify;
-        -ms-flex-pack: justify;
-            justify-content: space-between;
+    align-items: center;
+    justify-content: space-between;
   }
+
   .header__btn {
     display: none;
   }
+
   .header-nav {
     position: relative;
     top: 0;
     right: 0;
     width: 100%;
     height: 100%;
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
     padding: 0;
     background-color: transparent;
   }
+
   .header-nav__list {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    -ms-flex-direction: row;
-        flex-direction: row;
+    @include flex-column();
+    flex-direction: row;
     margin-left: auto;
   }
+
   .header-nav__item:not(:last-child) {
     margin-bottom: 0;
     margin-right: 42px;
   }
+
   .header-nav__link {
     color: var(--text-color);
   }
+
   .header-nav--active {
     color: var(--hover-color);
   }
@@ -264,13 +240,14 @@ img {
     padding-left: 50px;
     padding-right: 50px;
   }
+
   .header {
     position: relative;
     padding-top: 64px;
     padding-bottom: 54px;
   }
+
   .header-nav--active {
     color: var(--hover-color);
   }
 }
-/*# sourceMappingURL=style.css.map */
